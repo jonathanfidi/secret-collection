@@ -9,16 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest"
+    "react-query": "^3.39.3",
+    "react-singleton-hook": "^4.0.1",
+    "styled-components": "^6.0.8",
+    "use-async-effect": "^2.2.7",
+    "zustand": "^4.4.2"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "typescript": "latest"
   }
 }

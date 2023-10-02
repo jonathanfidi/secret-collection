@@ -115,7 +115,7 @@ const Container = styled.section`
 
 const Products = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 14rem;
   align-items: flex-end;
   height: 540px;
   transition: transform 0.5s ease;

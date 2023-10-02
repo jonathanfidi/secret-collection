@@ -40,7 +40,7 @@ const CartItem = ({ cartItem, onAddOne, onRemoveOne, onDelete }: Props) => {
       </Details>
       <Actions>
         <TextButton onClick={() => onDelete(product)}>
-          <img src="/icons/trash.svg" width={28} height={28} alt="delete" />
+          <img src="/icons/trash.svg" width={22} height={22} alt="delete" />
         </TextButton>
       </Actions>
     </Container>
@@ -65,7 +65,7 @@ const Container = styled.article`
 const ImageContainer = styled.div`
   position: relative;
   width: 200px;
-  height: 200px;
+  height: 100%;
   flex: 1;
   text-align: left;
 `;

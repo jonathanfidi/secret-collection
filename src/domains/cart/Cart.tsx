@@ -95,6 +95,10 @@ const Taxes = styled.div`
   font-weight: 300;
   text-align: right;
   text-transform: uppercase;
+
+  span {
+    font-weight: 100;
+  }
 `;
 
 const Total = styled.div`
@@ -103,4 +107,8 @@ const Total = styled.div`
   font-weight: 300;
   text-align: right;
   text-transform: uppercase;
+
+  span {
+    font-weight: 100;
+  }
 `;

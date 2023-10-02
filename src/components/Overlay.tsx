@@ -1,20 +1,21 @@
 import styled from "styled-components";
 
 type Props = {
+  isOpen: boolean;
   children: React.ReactNode;
 };
 
-const Overlay = ({ children }: Props) => {
+const Overlay = ({ isOpen, children }: Props) => {
   return (
-    <Container>
-      <Content>{children}</Content>
+    <Container isOpen={isOpen}>
+      <Content isOpen={isOpen}>{children}</Content>
     </Container>
   );
 };
 
 export default Overlay;
 
-const Container = styled.div`
+const Container = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -23,9 +24,12 @@ const Container = styled.div`
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+  transform: ${({ isOpen }) => (isOpen ? "translateY(0)" : "translateY(100%)")};
+  transition: opacity 0.5s ease;
 `;
 
-const Content = styled.div`
+const Content = styled.div<{ isOpen: boolean }>`
   position: absolute;
   top: 0;
   right: 0;
@@ -34,4 +38,11 @@ const Content = styled.div`
   height: 100vh;
   padding: 2rem;
   background-color: #fff;
+  transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
+  transition: transform 0.5s ease;
+
+  @media (min-width: 620px) {
+    padding-left: 150px;
+    clip-path: polygon(0% 100%, 17.5% 0%, 100% 0%, 100% 100%);
+  }
 `;

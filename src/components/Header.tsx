@@ -20,11 +20,9 @@ const Header = () => {
         </TextButton>
       </Container>
 
-      {isCartOpen && (
-        <Overlay>
-          <Cart onClose={() => closeCart()} />
-        </Overlay>
-      )}
+      <Overlay isOpen={isCartOpen}>
+        <Cart onClose={() => closeCart()} />
+      </Overlay>
     </>
   );
 };

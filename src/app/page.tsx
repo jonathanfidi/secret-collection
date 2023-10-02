@@ -5,24 +5,33 @@ import TextButton from "@/components/UIKit/buttons/TextButton";
 import ProductsCarousel from "@/domains/products/ProductsCarousel";
 import useProducts from "@/domains/products/useProducts";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 export default function Page() {
   const { push } = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
   const products = useProducts();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) push("/login");
+    if (!token) return push("/login");
+    setIsLoading(false);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    push("/login");
+  };
+
+  if (isLoading) return null;
 
   return (
     <>
       <Header />
       <main>
         <header>
-          <Title>The Secret Collection</Title>
+          <Title onClick={handleLogout}>The Secret Collection</Title>
         </header>
         <ProductsListActions>
           <TextButton>

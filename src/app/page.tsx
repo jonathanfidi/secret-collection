@@ -4,10 +4,18 @@ import Header from "@/components/Header";
 import TextButton from "@/components/UIKit/buttons/TextButton";
 import ProductsCarousel from "@/domains/products/ProductsCarousel";
 import useProducts from "@/domains/products/useProducts";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 export default function Page() {
+  const { push } = useRouter();
   const products = useProducts();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) push("/login");
+  }, []);
 
   return (
     <>

@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 const PrimaryButton = styled.button`
-  padding: 1.5rem 3rem;
+  padding: 1.3rem 3rem;
   cursor: pointer;
   color: #fff;
-  font-size: 2.28571rem;
+  font-size: 1.2rem;
+  font-weight: 200;
+  // font-size: 2.28571rem;
   font-family: inherit;
-  font-weight: 300;
+  // font-weight: 300;
   text-transform: uppercase;
   border: none;
   border-radius: 10px;

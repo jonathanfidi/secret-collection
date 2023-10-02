@@ -3,6 +3,7 @@
 import PrimaryButton from "@/components/UIKit/buttons/PrimaryButton";
 import InputText from "@/components/UIKit/forms/InputText";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import styled from "styled-components";
 
@@ -13,6 +14,7 @@ interface FormData {
 
 export default function Page() {
   const { push } = useRouter();
+  const [error, setError] = useState<string>();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +22,8 @@ export default function Page() {
     if (!!login?.value.length && !!password.value.length) {
       localStorage.setItem("token", JSON.stringify({ access: "granted" }));
       push("/");
+    } else {
+      setError("Your login or password are incorrect");
     }
   };
 
@@ -37,8 +41,19 @@ export default function Page() {
           <span style={{ marginLeft: "2rem" }}>いらっしゃいませ</span>
         </Welcome>
         <Form onSubmit={handleSubmit}>
-          <InputText name="login" type="text" placeholder="Login" />
-          <InputText name="password" type="password" placeholder="Password" />
+          {error && <span style={{ color: "red" }}>{error}</span>}
+          <InputText
+            name="login"
+            type="text"
+            placeholder="Login"
+            error={!!error}
+          />
+          <InputText
+            name="password"
+            type="password"
+            placeholder="Password"
+            error={!!error}
+          />
           <PrimaryButton style={{ marginTop: "3rem" }}>Login</PrimaryButton>
         </Form>
       </Content>

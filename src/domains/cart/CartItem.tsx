@@ -34,7 +34,7 @@ const CartItem = ({ cartItem, onAddOne, onRemoveOne, onDelete }: Props) => {
           <QuantityButton onClick={() => onRemoveOne(product)}>
             -
           </QuantityButton>{" "}
-          {cartItem.quantity} item{" "}
+          {cartItem.quantity} item{cartItem.quantity > 1 ? "s" : ""}{" "}
           <QuantityButton onClick={() => onAddOne(product)}>+</QuantityButton>
         </Quantity>
       </Details>

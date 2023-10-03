@@ -67,8 +67,6 @@ const ProductsCarousel = ({ products }: Props) => {
     };
   }, []);
 
-  console.log("productWidth", productWidth);
-
   const selectedProductXOffset =
     selectedProduct && productsXOffsets[products.indexOf(selectedProduct)];
 

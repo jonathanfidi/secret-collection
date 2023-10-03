@@ -55,6 +55,7 @@ const ProductsCarousel = ({ products }: Props) => {
 
   useEffect(() => {
     const handleResize = () => {
+      if (window.innerWidth >= 1600) return setProductWidth(544);
       if (window.innerWidth >= 720) return setProductWidth(430);
       if (window.innerWidth >= 420) return setProductWidth(280);
       return setProductWidth(200);

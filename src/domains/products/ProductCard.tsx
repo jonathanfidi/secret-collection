@@ -54,7 +54,7 @@ const Container = styled.article`
   position: relative;
   width: 90%;
   max-width: 816px;
-  min-height: 205px;
+  // min-height: 205px;
   aspect-ratio: 816 / 455;
   margin-top: 90px;
   padding: 1rem;
@@ -80,6 +80,11 @@ const Content = styled.div`
   gap: 0.5rem;
   width: 50%;
   height: 100%;
+  font-size: 0.5rem;
+
+  @media (min-width: 720px) {
+    font-size: 1rem;
+  }
 `;
 
 const Description = styled.p`
@@ -87,14 +92,14 @@ const Description = styled.p`
   display: flex;
   align-items: center;
   color: #4b4b4b;
-  font-size: 0.71429rem;
+  font-size: 0.71429em;
   font-style: italic;
   font-weight: 300;
   line-height: normal;
   text-align: left;
 
   @media (min-width: 390px) {
-    font-size: 0.85714rem;
+    font-size: 0.85714em;
   }
 `;
 

@@ -71,52 +71,54 @@ const ProductsCarousel = ({ products }: Props) => {
     selectedProduct && productsXOffsets[products.indexOf(selectedProduct)];
 
   return (
-    <Container>
-      <Track>
-        <Products
-          style={{ transform: `translateX(${selectedProductXOffset})` }}
-        >
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onClick={setSelectedProduct}
-              disabled={selectedProduct?.id !== product.id}
-              style={{
-                flex: `0 0 ${productWidth}px`,
-                transform:
-                  selectedProduct?.id === product.id
-                    ? "scale(1.5)"
-                    : "scale(1)",
-                transformOrigin: "bottom center",
-                zIndex: selectedProduct?.id === product.id ? 1 : 0,
-              }}
-            />
-          ))}
-        </Products>
-      </Track>
-      <Navigation>
-        <TextButton onClick={() => selectPreviousProduct()}>
-          <img src="/icons/arrow-left.svg" alt="Previous" />
-        </TextButton>
-        <TextButton onClick={() => selectNextProduct()}>
-          <img src="/icons/arrow-right.svg" alt="Next" />
-        </TextButton>
-      </Navigation>
-      <Footer>
-        <AddToCartButton
-          onClick={() => {
-            if (selectedProduct) {
-              addOneToCart(selectedProduct);
-              openCart();
-            }
-          }}
-          disabled={!selectedProduct}
-        >
-          Add to cart
-        </AddToCartButton>
-      </Footer>
-    </Container>
+    !!products?.length && (
+      <Container>
+        <Track>
+          <Products
+            style={{ transform: `translateX(${selectedProductXOffset})` }}
+          >
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onClick={setSelectedProduct}
+                disabled={selectedProduct?.id !== product.id}
+                style={{
+                  flex: `0 0 ${productWidth}px`,
+                  transform:
+                    selectedProduct?.id === product.id
+                      ? "scale(1.5)"
+                      : "scale(1)",
+                  transformOrigin: "bottom center",
+                  zIndex: selectedProduct?.id === product.id ? 1 : 0,
+                }}
+              />
+            ))}
+          </Products>
+        </Track>
+        <Navigation>
+          <TextButton onClick={() => selectPreviousProduct()}>
+            <img src="/icons/arrow-left.svg" alt="Previous" />
+          </TextButton>
+          <TextButton onClick={() => selectNextProduct()}>
+            <img src="/icons/arrow-right.svg" alt="Next" />
+          </TextButton>
+        </Navigation>
+        <Footer>
+          <AddToCartButton
+            onClick={() => {
+              if (selectedProduct) {
+                addOneToCart(selectedProduct);
+                openCart();
+              }
+            }}
+            disabled={!selectedProduct}
+          >
+            Add to cart
+          </AddToCartButton>
+        </Footer>
+      </Container>
+    )
   );
 };
 
